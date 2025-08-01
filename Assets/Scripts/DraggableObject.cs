@@ -26,7 +26,7 @@ public class DraggableObject : MonoBehaviour
     {
         zCoord = Camera.main.WorldToScreenPoint(transform.position).z;
         offset = transform.position - GetMouseWorldPos();
-        
+        tileManager.RemoveInstrument(transform.position);
     }
     
     void OnMouseDrag()

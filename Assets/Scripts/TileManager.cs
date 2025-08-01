@@ -11,9 +11,10 @@ public class TileManager : MonoBehaviour
     
     private Tilemap tilemap;
     private int[] columnsIdxs;
-    private int[] rowIdxs;
+    private int[] rowsIdxs;
     private int currIdx;
     private int prevIdx;
+    private PatternManager patternManager;
 
     private GameObject[,] gridArray;
     private HashSet<InstrumentTypes.InstrumentType>[] song;
@@ -23,6 +24,7 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
+        patternManager = gameObject.GetComponent<PatternManager>();
         bounds = tilemap.cellBounds;
         PopulateColumns();
         PopulateGrids();
@@ -30,7 +32,7 @@ public class TileManager : MonoBehaviour
 
     private void PopulateGrids()
     {
-        gridArray = new GameObject[columnsIdxs.Length, rowIdxs.Length];
+        gridArray = new GameObject[columnsIdxs.Length, rowsIdxs.Length];
         song = new HashSet<InstrumentTypes.InstrumentType>[columnsIdxs.Length];
         
         for (int i = 0; i < columnsIdxs.Length; i++)
@@ -53,7 +55,7 @@ public class TileManager : MonoBehaviour
         }
 
         columnsIdxs = columns.ToArray();
-        rowIdxs = rows.ToArray();
+        rowsIdxs = rows.ToArray();
         currIdx = columnsIdxs[0];
         prevIdx = columnsIdxs.Last();
         
@@ -73,7 +75,7 @@ public class TileManager : MonoBehaviour
     {
         song[currIdx].Clear();
         
-        foreach (int y in rowIdxs)
+        foreach (int y in rowsIdxs)
         {
             Vector3Int cellPos = new Vector3Int(currIdx + bounds.xMin, y + bounds.yMin, 0);
             Vector3Int prevPos = new Vector3Int(prevIdx + bounds.xMin, y + bounds.yMin, 0);
@@ -101,14 +103,7 @@ public class TileManager : MonoBehaviour
         prevIdx = currIdx;
         if (currIdx == columnsIdxs.Length - 1)
         {
-            Debug.Log("Song Played: ");
-            for (int i = 0; i < song.Length; i++)
-            {
-                foreach (var type in song[i])
-                {
-                    Debug.Log(type);
-                }
-            }
+            Debug.Log("Song matches pattern: " + patternManager.MatchesPattern(song));
         }
         currIdx = currIdx < (columnsIdxs.Length - 1) ? currIdx + 1 : columnsIdxs[0];
     }
@@ -121,6 +116,17 @@ public class TileManager : MonoBehaviour
             Destroy(gridArray[gridPosition.x, gridPosition.y]);
         }
         gridArray[gridPosition.x, gridPosition.y] = go;
+    }
+
+    public void RemoveInstrument(Vector3 worldPosition)
+    {
+        Vector2Int gridPosition = GetXYPosition(worldPosition);
+        if (gridPosition.x < gridArray.GetLength(0) && 
+            gridPosition.y < gridArray.GetLength(1)&& 
+            gridArray[gridPosition.x, gridPosition.y])
+        {
+            gridArray[gridPosition.x, gridPosition.y] = null;
+        }
     }
 
     /**
