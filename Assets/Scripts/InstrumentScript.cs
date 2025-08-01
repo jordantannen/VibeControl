@@ -1,29 +1,63 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public abstract class InstrumentScript : MonoBehaviour
 {
 
-    private int xPosition;
-
-    private int yPosition;
-    
     // Sound instrument makes.
-    [SerializeField] AudioClip audioClip;
+    public AudioClip audioClip;
+    public TileBase activeTile;
+    public Tilemap tilemap;
+    
+    private int xPosition;
+    private int yPosition;
+    private bool hasBeenPlayed = false;
+
+    private SpriteRenderer spriteRenderer;
+    protected AudioSource audioSource;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (tilemap == null)
+        {
+            tilemap = FindObjectOfType<Tilemap>();
+        }
         
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckCurrentTile();
+    }
+
+    private void CheckCurrentTile()
+    {
         
+        Vector3Int currentPos = tilemap.WorldToCell(transform.position);
+        TileBase currTile = tilemap.GetTile(currentPos);
+        if (currTile == activeTile)
+        {
+            spriteRenderer.color = Color.red;
+            if (!hasBeenPlayed)
+            {
+                Play();
+                hasBeenPlayed = true;
+            }
+        }
+        else
+        {
+            spriteRenderer.color = Color.blue;
+            hasBeenPlayed = false;
+        }
     }
 
     /**
      * Extensible method to implement instrument attack/effect.
      */
-    public abstract void Play();
+    protected abstract void Play();
 }

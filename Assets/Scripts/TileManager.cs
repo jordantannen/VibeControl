@@ -53,23 +53,22 @@ public class TileManager : MonoBehaviour
 
     private void HandleBeat()
     {
-        // foreach (Vector3Int cellPos in tilemap.cellBounds.allPositionsWithin)
-        // {
-        //     if (!tilemap.HasTile(cellPos)) continue;
-        //     TileBase currTile = tilemap.GetTile(cellPos);
-        //     tilemap.SetTile(cellPos, currTile == tile1 ? tile2 : tile1);
-        // }
-        
-
         for (int y = bounds.yMin; y < bounds.yMax; y++)
         {
             Vector3Int cellPos = new Vector3Int(currIdx, y, 0);
             Vector3Int prevPos = new Vector3Int(prevIdx, y, 0);
-
-            tilemap.SetTile(prevPos, inactiveTile);
-            tilemap.SetTile(cellPos, activeTile);
+    
+            if (tilemap.GetTile(prevPos) == activeTile)
+            {
+                tilemap.SetTile(prevPos, inactiveTile);
+            }
+            if (tilemap.GetTile(cellPos) == inactiveTile)
+            {
+                tilemap.SetTile(cellPos, activeTile);
+            }
+            
         }
-
+    
         prevIdx = currIdx;
         currIdx = (currIdx < (columnsIdxs.Length - 1) / 2) ? currIdx + 1 : columnsIdxs[0];
     }
