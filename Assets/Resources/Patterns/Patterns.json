@@ -1,0 +1,45 @@
+{
+  "patterns": 
+          [
+            {
+              "pattern": 
+                      [
+                        ["Hihat"]
+                      ]
+            },
+            {
+              "pattern": 
+                      [
+                        ["Kick", "Hihat", "Clap"],
+                        [],
+                        ["Hihat"],
+                        [],
+                        ["Snare", "Hihat"],
+                        [],
+                        ["Hihat"],
+                        ["Kick"],
+                        ["Kick", "Hihat"],
+                        [],
+                        ["Kick", "Hihat"],
+                        [],
+                        ["Snare", "Hihat"],
+                        [],
+                        ["Hihat"]
+                      ]
+            },
+            {
+              "pattern": 
+                      [
+                        ["Kick", "Hihat"]
+                      ]
+            },
+            {
+              "pattern":
+                      [
+                        ["Kick"],
+                        [],
+                        ["Hihat"]
+                      ]
+            }
+          ]
+}
