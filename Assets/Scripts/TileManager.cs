@@ -22,6 +22,7 @@ public class TileManager : MonoBehaviour
     private BoundsInt bounds;
 
     public Spell spell;
+    public Spells spells;
     
     void Start()
     {
@@ -106,7 +107,12 @@ public class TileManager : MonoBehaviour
         if (currIdx == columnsIdxs.Length - 1)
         {
             Debug.Log("Song matches pattern: " + patternManager.MatchesPattern(song));
-            Instantiate(spell, transform.position, transform.rotation);
+            SpellType spellPlayed = patternManager.MatchesPattern(song);
+            if (spellPlayed != SpellType.None)
+            {
+                Instantiate(spells[spellPlayed], transform.position, transform.rotation); 
+            }
+            
         }
         currIdx = currIdx < (columnsIdxs.Length - 1) ? currIdx + 1 : columnsIdxs[0];
     }

@@ -5,7 +5,8 @@
               "pattern": 
                       [
                         ["Hihat"]
-                      ]
+                      ],
+              "spell": "Rock"
             },
             {
               "pattern": 
@@ -25,13 +26,15 @@
                         ["Snare", "Hihat"],
                         [],
                         ["Hihat"]
-                      ]
+                      ],
+              "spell": "Rock"
             },
             {
               "pattern": 
                       [
                         ["Kick", "Hihat"]
-                      ]
+                      ],
+              "spell": "HipHop"
             },
             {
               "pattern":

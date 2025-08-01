@@ -118,6 +118,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   damageAmount: 10
   health: 10
+  spellType: 1
   tickSpeed: 0
   speed: 2
   player: {fileID: 0}

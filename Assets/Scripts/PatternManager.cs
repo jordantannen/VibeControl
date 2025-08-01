@@ -22,7 +22,7 @@ public class PatternManager : MonoBehaviour
     /**
      * Check if provided pattern list exists in the pattern mapping.
      */
-    public bool MatchesPattern(HashSet<InstrumentTypes.InstrumentType>[] pattern)
+    public SpellType MatchesPattern(HashSet<InstrumentTypes.InstrumentType>[] pattern)
     {
         // Trim empty sets off start + end of list
         int startOffset = 0;
@@ -45,12 +45,14 @@ public class PatternManager : MonoBehaviour
         }
 
         pattern = pattern[startOffset..endOffset];
-        
-        if (patterns.patterns.Contains(new Pattern() { pattern = pattern }))
+        foreach (var p in patterns.patterns)
         {
-            return true;
+            if (p.Equals(new Pattern() { pattern = pattern }))
+            {
+                return p.spell;
+            }
         }
-        return false;
+        return SpellType.None;
     }
 }
 
@@ -64,6 +66,8 @@ public class PatternList
 public class Pattern
 {
     public HashSet<InstrumentTypes.InstrumentType>[] pattern;
+    
+    public SpellType spell;
 
     /**
      * Override equals method to compare contents of hashsets within the pattern.
