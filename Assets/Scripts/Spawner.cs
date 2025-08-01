@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject entityToSpawn;
     public float spawnRate = 1.0f;
     public string spawnEntityTag;
+    public bool randomizeSpawnPosition = false;
+    public Vector2 randomOffsetRange = new Vector2(1f, 1f);
     
     private float timer = 0;
     private bool hasEntity = false;
@@ -31,11 +34,17 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        Debug.Log("Spawn Hit");
         if (!hasEntity)
         {
-            Instantiate(entityToSpawn, transform.position, transform.rotation);
-            hasEntity = true;
+            Vector3 spawnPos = transform.position;
+            if (randomizeSpawnPosition)
+            {
+                float dx = Random.Range(-randomOffsetRange.x, randomOffsetRange.x);
+                float dy = Random.Range(-randomOffsetRange.y, randomOffsetRange.y);
+                spawnPos += new Vector3(dx, dy, 0f);
+            }
+            Instantiate(entityToSpawn, spawnPos, transform.rotation);
+            // hasEntity = true;
         }
     }
 
@@ -49,10 +58,8 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Hit");
         if (other.CompareTag(spawnEntityTag))
         {
-            
             hasEntity = false;
         }
     }
