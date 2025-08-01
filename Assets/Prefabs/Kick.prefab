@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1853950787513936426}
   - component: {fileID: 4451106619702887186}
   - component: {fileID: 8197636777339518111}
-  - component: {fileID: 6855787302379659679}
   - component: {fileID: 3606349159359470254}
   - component: {fileID: -4780688942061272533}
   - component: {fileID: 8775608669303216873}
@@ -109,21 +108,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: c9363fcb274e4436c8490e5ef3e51ea1, type: 3}
   activeTile: {fileID: 11400000, guid: 465378ca1522f4655b838489737f7e1a, type: 2}
   tilemap: {fileID: 0}
---- !u!114 &6855787302379659679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3001531227291467279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e263b7dfb249f4af288d2dcfd7290d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  maxSnapDist: 0.5
-  snappableTiles: {fileID: 11400000, guid: 6484cf38019d247f0990697d92927bde, type: 2}
+  instrumentType: 2
 --- !u!114 &3606349159359470254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13441890d95c34013a692ae00101ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
+  maxSnapDist: 0.5
+  snappableTiles: {fileID: 11400000, guid: 6484cf38019d247f0990697d92927bde, type: 2}
 --- !u!114 &-4780688942061272533
 MonoBehaviour:
   m_ObjectHideFlags: 0

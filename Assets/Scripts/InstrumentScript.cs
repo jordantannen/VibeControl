@@ -8,10 +8,12 @@ public abstract class InstrumentScript : MonoBehaviour
     public AudioClip audioClip;
     public TileBase activeTile;
     public Tilemap tilemap;
+    public InstrumentTypes.InstrumentType instrumentType;
     
     private int xPosition;
     private int yPosition;
     private bool hasBeenPlayed = false;
+    private bool hasBeenPlaced = false;
 
     private SpriteRenderer spriteRenderer;
     protected AudioSource audioSource;
@@ -35,12 +37,17 @@ public abstract class InstrumentScript : MonoBehaviour
         CheckCurrentTile();
     }
 
+    public void SetHasBeenPlaced(bool hasBeenPlaced)
+    {
+        this.hasBeenPlaced = hasBeenPlaced;
+    }
+
     private void CheckCurrentTile()
     {
         
         Vector3Int currentPos = tilemap.WorldToCell(transform.position);
         TileBase currTile = tilemap.GetTile(currentPos);
-        if (currTile == activeTile)
+        if (hasBeenPlaced && currTile == activeTile)
         {
             spriteRenderer.color = Color.red;
             if (!hasBeenPlayed)
