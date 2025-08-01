@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
     {
         currHealth -= damageAmount;
         healthBar.SetHealth(currHealth);
+        if (currHealth <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
     
     private void OnTriggerEnter2D(Collider2D other)
