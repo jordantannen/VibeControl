@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public int currHealth;
     public HealthBar healthBar;
     public string enemyTag;
+    public Spell spell;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(20);
+            Instantiate(spell, transform.position, transform.rotation);
         }
     }
 

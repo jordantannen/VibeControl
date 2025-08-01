@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Instrument
+  - Spell
   layers:
   - Default
   - TransparentFX

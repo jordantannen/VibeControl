@@ -6,24 +6,24 @@ public class Enemy : MonoBehaviour
 {
     // Filter for collisions. Should be used to exclude colliding with other enemies.
     public ContactFilter2D movementFilter;
-
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-
-    [SerializeField] private float collisionOffset = 0.05f;
-    // Enemies spawn in one row (or column depending on how design goes) and move in it in a straight line.
-    private int _row;
     
-    [SerializeField] private int speed;
     public int damageAmount = 10;
+    public int health = 10;
+    public SpellType spellType;
+
     // Ticks per action by the enemy. Could potentially be desired to change how quickly enemy
     // does actions instead of just movement speed.
     // not sure yet
     [SerializeField] private int tickSpeed;
-
-    private Rigidbody2D rb;
+    [SerializeField] private int speed;
     [SerializeField] private Transform player;
     [SerializeField] private string playerTag;
     [SerializeField] private string enemyTag;
+    [SerializeField] private string spellTag;
+    [SerializeField] private float collisionOffset = 0.05f;
+    
+    private Rigidbody2D rb;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,9 +51,6 @@ public class Enemy : MonoBehaviour
     {
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
-        // Vector2 moveVector = this.speed * Time.fixedDeltaTime * this.direction;
-        //
-        // rb.MovePosition(rb.position + moveVector);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,25 +59,23 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag(spellTag))
+        {
+            Spell spell = other.GetComponent<Spell>();
+            if (spell && spell.spellType == spellType)
+            {
+                TakeDamage(spell.damage);
+            }
+        }
     }
-
-    //
-    // void PerformAction()
-    // {
-    //     int count = rb.Cast(
-    //         this.direction,
-    //         this.movementFilter,
-    //         this.castCollisions,
-    //         this.speed * Time.fixedDeltaTime + this.collisionOffset);
-    //
-    //     if (count == 0)
-    //     {
-    //         this.Move();
-    //     }
-    //     else
-    //     {
-    //         GameObject collidedInstrument = this.castCollisions[0].collider.gameObject;
-    //         this.Attack(collidedInstrument);
-    //     }
-    // }
+    
+    void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        // Maybe add healthbars and dont one-shot enemies
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
