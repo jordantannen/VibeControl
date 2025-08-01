@@ -206,6 +206,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 33c175d8bc22e421fb8a977aaa87a2f6, type: 3}
   activeTile: {fileID: 11400000, guid: 465378ca1522f4655b838489737f7e1a, type: 2}
   tilemap: {fileID: 0}
+  instrumentType: 1
 --- !u!114 &389639638512528709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13441890d95c34013a692ae00101ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
+  maxSnapDist: 0.5
+  snappableTiles: {fileID: 11400000, guid: 6484cf38019d247f0990697d92927bde, type: 2}
 --- !u!114 &-469081393548581925
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        Debug.Log("Spawn Hit");
+        // Debug.Log("Spawn Hit");
         if (!hasEntity)
         {
             Instantiate(entityToSpawn, transform.position, transform.rotation);
