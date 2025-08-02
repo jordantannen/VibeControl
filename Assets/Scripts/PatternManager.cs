@@ -11,7 +11,8 @@ public class PatternManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        patterns = JsonConvert.DeserializeObject<PatternList>(Resources.Load<TextAsset>("Patterns/InstrumentPatterns").text);
+        // patterns = JsonConvert.DeserializeObject<PatternList>(Resources.Load<TextAsset>("Patterns/InstrumentPatterns").text);
+        patterns = JsonConvert.DeserializeObject<PatternList>(Resources.Load<TextAsset>("Patterns/TestPattern").text);
     }
 
     // Update is called once per frame
@@ -76,6 +77,8 @@ public class Pattern
     public String spell;
     
     public InstrumentTypes.InstrumentType instrument;
+
+    public String name;
 
     public bool SongContainsPattern(HashSet<InstrumentTypes.InstrumentType>[] song)
     {

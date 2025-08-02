@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private string enemyTag;
     [SerializeField] private string spellTag;
     [SerializeField] private float collisionOffset = 0.05f;
+    [SerializeField] private TextMeshProUGUI bubbleText;
     
     private Rigidbody2D rb;
     private int stallDistance;
@@ -62,13 +64,17 @@ public class Enemy : MonoBehaviour
         
         patternManager = player.GetComponentInChildren<PatternManager>();
         desiredPattern = patternManager.GetRandomPattern();
-        foreach (var bar in desiredPattern.pattern)
-        {
-            foreach (var i in bar)
-            {
-                Debug.Log(i);
-            }
-        }
+
+        bubbleText.text = desiredPattern.name;
+
+        // foreach (var bar in desiredPattern.pattern)
+        // {
+        //     Debug.Log(desiredPattern.pattern);
+        //     // foreach (var i in bar)
+        //     // {
+        //     //     Debug.Log(i);
+        //     // }
+        // }
     }
 
     // Update is called once per frame
