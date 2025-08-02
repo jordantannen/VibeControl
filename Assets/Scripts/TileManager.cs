@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -108,10 +107,9 @@ public class TileManager : MonoBehaviour
         {
             Debug.Log("Song matches pattern: " + patternManager.MatchesPattern(song));
             SpellType spellPlayed = patternManager.MatchesPattern(song);
-            spell.song = song;
-            Instantiate(spell, transform.position, transform.rotation); 
-            Instantiate(spell, transform.position, transform.rotation); 
-            
+            Spell go = Instantiate(spell, transform.position, transform.rotation);
+            go.song = song;
+
         }
         currIdx = currIdx < (columnsIdxs.Length - 1) ? currIdx + 1 : columnsIdxs[0];
     }
