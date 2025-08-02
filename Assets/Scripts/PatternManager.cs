@@ -54,6 +54,11 @@ public class PatternManager : MonoBehaviour
         }
         return SpellType.None;
     }
+
+    public Pattern GetRandomPattern()
+    {
+        return patterns.patterns[UnityEngine.Random.Range(0, patterns.patterns.Count)];
+    }
 }
 
 [Serializable]
@@ -69,6 +74,10 @@ public class Pattern
     
     public SpellType spell;
 
+    public bool SongContainsPattern(HashSet<InstrumentTypes.InstrumentType>[] song)
+    {
+        return Equals(new Pattern() { pattern = song });
+    }
     /**
      * Override equals method to compare contents of hashsets within the pattern.
      */

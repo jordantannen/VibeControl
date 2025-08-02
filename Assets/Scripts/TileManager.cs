@@ -108,11 +108,9 @@ public class TileManager : MonoBehaviour
         {
             Debug.Log("Song matches pattern: " + patternManager.MatchesPattern(song));
             SpellType spellPlayed = patternManager.MatchesPattern(song);
-            if (spellPlayed != SpellType.None)
-            {
-                Instantiate(spell, transform.position, transform.rotation); 
-                // Instantiate(spells[spellPlayed], transform.position, transform.rotation); 
-            }
+            spell.song = song;
+            Instantiate(spell, transform.position, transform.rotation); 
+            Instantiate(spell, transform.position, transform.rotation); 
             
         }
         currIdx = currIdx < (columnsIdxs.Length - 1) ? currIdx + 1 : columnsIdxs[0];

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float wanderTimer;
     [SerializeField] private float wanderDirectionInterval = 3;
     
+    private PatternManager patternManager;
+    private Pattern desiredPattern;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +59,9 @@ public class Enemy : MonoBehaviour
         patienceBar.SetPatience(currPatience);
 
         wanderTimer = wanderDirectionInterval;
+        
+        patternManager = player.GetComponentInChildren<PatternManager>();
+        desiredPattern = patternManager.GetRandomPattern();
     }
 
     // Update is called once per frame
@@ -111,10 +118,18 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.CompareTag(spellTag))
         {
             Spell spell = other.GetComponent<Spell>();
-            if (spell && spell.spellType == spellType)
+            if (spell)
             {
-                TakeDamage(spell.damage);
+                HashSet<InstrumentTypes.InstrumentType>[] song = spell.song;
+                if (desiredPattern.SongContainsPattern(song))
+                {
+                    TakeDamage(spell.damage);
+                }
             }
+            // if (spell && spell.spellType == spellType)
+            // {
+            //     TakeDamage(spell.damage);
+            // }
         }
     }
     
