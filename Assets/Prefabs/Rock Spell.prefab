@@ -77,8 +77,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 4250240542740113009, guid: 3abc5c4de20ec41cd9270765bb67a597, type: 3}
   m_Color: {r: 0.4433962, g: 0.25725347, b: 0.25725347, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,8 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88280ed6eb564a02a440da130d83920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 30
+  growthRate: 10
   damage: 10
   spellType: 1
   duration: 1
-  instantiated: 0

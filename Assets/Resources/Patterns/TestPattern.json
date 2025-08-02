@@ -1,0 +1,16 @@
+{
+  "patterns":
+  [
+    {
+      "pattern": [
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], []
+      ],
+      "spell": "1/4",
+      "instrument": "Kick",
+      "name": "[K][][][] x 4"
+    }
+  ]
+}

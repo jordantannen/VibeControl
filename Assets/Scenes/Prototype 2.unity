@@ -175,7 +175,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1509434, g: 0.12032752, b: 0.12032752, a: 0}
+  m_BackGroundColor: {r: 0.49455586, g: 0.7169812, b: 0.49038807, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -296,6 +296,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2893832823399167028, guid: 306291df6a91047679b685265cb7b586, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2896885534549749436, guid: 306291df6a91047679b685265cb7b586, type: 3}
       propertyPath: m_Color.b
       value: 0.16037738
@@ -307,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 2896885534549749436, guid: 306291df6a91047679b685265cb7b586, type: 3}
       propertyPath: m_Color.r
       value: 0.16037738
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896885534549749436, guid: 306291df6a91047679b685265cb7b586, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3591274161052254926, guid: 306291df6a91047679b685265cb7b586, type: 3}
       propertyPath: m_AnchorMax.x
@@ -454,6 +462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Step Sequencer
       objectReference: {fileID: 0}
+    - target: {fileID: 6805708763450074298, guid: 563d18cfed8ef4654a6f0bb6ead158a7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7887633163418157413, guid: 563d18cfed8ef4654a6f0bb6ead158a7, type: 3}
       propertyPath: spell
       value: 
@@ -587,6 +599,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7334120415349813707, guid: 8fd3312f26ee343398be17b817095727, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -663,6 +679,10 @@ PrefabInstance:
     - target: {fileID: 5441627437906925376, guid: 8fd3312f26ee343398be17b817095727, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334120415349813707, guid: 8fd3312f26ee343398be17b817095727, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -829,7 +849,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
   m_FlipX: 0
@@ -927,6 +947,10 @@ PrefabInstance:
     - target: {fileID: 5441627437906925376, guid: 8fd3312f26ee343398be17b817095727, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334120415349813707, guid: 8fd3312f26ee343398be17b817095727, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1885,6 +1909,10 @@ PrefabInstance:
     - target: {fileID: 5441627437906925376, guid: 8fd3312f26ee343398be17b817095727, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334120415349813707, guid: 8fd3312f26ee343398be17b817095727, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
