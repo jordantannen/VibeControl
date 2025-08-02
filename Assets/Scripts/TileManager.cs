@@ -132,6 +132,8 @@ public class TileManager : MonoBehaviour
     {
         Vector2Int gridPosition = GetXYPosition(worldPosition);
         if (gridPosition.x < gridArray.GetLength(0) && 
+            gridPosition.x >= 0 &&
+            gridPosition.y >= 0 &&
             gridPosition.y < gridArray.GetLength(1)&& 
             gridArray[gridPosition.x, gridPosition.y])
         {

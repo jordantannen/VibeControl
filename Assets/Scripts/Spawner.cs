@@ -63,4 +63,20 @@ public class Spawner : MonoBehaviour
             hasEntity = false;
         }
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(spawnEntityTag))
+        {
+            hasEntity = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(spawnEntityTag))
+        {
+            hasEntity = false;
+        }
+    }
 }
