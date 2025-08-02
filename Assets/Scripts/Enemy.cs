@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public SpellType spellType;
 
     public int maxPatience = 500;
-    public int currPatience = 0;
+    public int currPatience;
     public PatienceBar patienceBar;
 
     public int minRange = 3;
@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     // not sure yet
     [SerializeField] private int tickSpeed;
     [SerializeField] private int speed;
+    [SerializeField] private int fedUpSpeed = 1;
+    
     [SerializeField] private Transform player;
     [SerializeField] private string playerTag;
     [SerializeField] private string enemyTag;
@@ -33,6 +35,11 @@ public class Enemy : MonoBehaviour
     private int stallDistance;
     private bool fedUp = false;
     
+    [SerializeField] private int wanderSpeed = 1;
+    private Vector2 wanderDirection;
+    [SerializeField] private float wanderTimer;
+    [SerializeField] private float wanderDirectionInterval = 3;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,19 +48,19 @@ public class Enemy : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag(playerTag).transform;
         }
-        stallDistance = Random.Range(minRange, maxRange);
-        Debug.Log(stallDistance);
+        // stallDistance = Random.Range(minRange, maxRange);
+
+        currPatience = maxPatience;
         patienceBar.SetMaxPatience(maxPatience);
         patienceBar.SetPatience(currPatience);
+
+        wanderTimer = wanderDirectionInterval;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // TODO determine how often/quickly enemies move and perform actions
-        // this.PerformAction();
         Move();
-        
     }
     
     /**
@@ -62,18 +69,28 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         float distance = Vector2.Distance(transform.position, player.position);
-        if (!fedUp && distance < stallDistance)
+        if (!fedUp) //&& distance < stallDistance
         {
-            rb.linearVelocity = Vector2.zero;
-            fedUp = IsFedup(speed);
+            // rb.linearVelocity = Vector2.zero;
+            Wander();
+            fedUp = IsFedup(fedUpSpeed);
         }
         else
         {
             Vector2 direction = (player.position - transform.position).normalized;
             rb.linearVelocity = direction * speed;
         }
-        // Vector2 direction = (player.position - transform.position).normalized;
-        // rb.linearVelocity = direction * speed;
+    }
+
+    private void Wander()
+    {
+        wanderTimer += Time.deltaTime;
+        if (wanderTimer >= wanderDirectionInterval)
+        {
+            wanderDirection = new Vector2(Random.Range(-2f, 2f), Random.Range(-1f, 1f)).normalized;
+            wanderTimer = 0;
+            rb.linearVelocity = wanderDirection * wanderSpeed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -104,13 +121,12 @@ public class Enemy : MonoBehaviour
     
     bool IsFedup(int patienceLost)
     {
-        currPatience += patienceLost;
+        currPatience -= patienceLost;
         patienceBar.SetPatience(currPatience);
-        if (currPatience >= maxPatience)
+        if (currPatience <= 0)
         {
             return true;
         }
-
         return false;
     }
     
