@@ -657,6 +657,10 @@ PrefabInstance:
       propertyPath: spell
       value: 
       objectReference: {fileID: 2676082478989391022, guid: 6ef65c515748e497b82abfc606deb43a, type: 3}
+    - target: {fileID: 7887633163418157413, guid: 563d18cfed8ef4654a6f0bb6ead158a7, type: 3}
+      propertyPath: spells
+      value: 
+      objectReference: {fileID: 11400000, guid: c5d4425ae4a532c498606e489d3a9009, type: 2}
     - target: {fileID: 8992098999004889425, guid: 563d18cfed8ef4654a6f0bb6ead158a7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

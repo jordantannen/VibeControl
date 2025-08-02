@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +10,13 @@ public class Enemy : MonoBehaviour
     public int damageAmount = 10;
     public int health = 10;
     public SpellType spellType;
+
+    public int maxPatience = 500;
+    public int currPatience = 0;
+    public PatienceBar patienceBar;
+
+    public int minRange = 3;
+    public int maxRange = 5;
 
     // Ticks per action by the enemy. Could potentially be desired to change how quickly enemy
     // does actions instead of just movement speed.
@@ -24,6 +30,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float collisionOffset = 0.05f;
     
     private Rigidbody2D rb;
+    private int stallDistance;
+    private bool fedUp = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +41,10 @@ public class Enemy : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag(playerTag).transform;
         }
+        stallDistance = Random.Range(minRange, maxRange);
+        Debug.Log(stallDistance);
+        patienceBar.SetMaxPatience(maxPatience);
+        patienceBar.SetPatience(currPatience);
     }
 
     // Update is called once per frame
@@ -49,8 +61,19 @@ public class Enemy : MonoBehaviour
      */
     private void Move()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * speed;
+        float distance = Vector2.Distance(transform.position, player.position);
+        if (!fedUp && distance < stallDistance)
+        {
+            rb.linearVelocity = Vector2.zero;
+            fedUp = IsFedup(speed);
+        }
+        else
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            rb.linearVelocity = direction * speed;
+        }
+        // Vector2 direction = (player.position - transform.position).normalized;
+        // rb.linearVelocity = direction * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,4 +101,17 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    bool IsFedup(int patienceLost)
+    {
+        currPatience += patienceLost;
+        patienceBar.SetPatience(currPatience);
+        if (currPatience >= maxPatience)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
 }
