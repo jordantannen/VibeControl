@@ -120,7 +120,7 @@ MonoBehaviour:
   damageAmount: 10
   health: 10
   spellType: 1
-  maxPatience: 500
+  maxPatience: 20000
   currPatience: 500
   patienceBar: {fileID: 8019749459834897392}
   minRange: 4

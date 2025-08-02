@@ -62,6 +62,13 @@ public class Enemy : MonoBehaviour
         
         patternManager = player.GetComponentInChildren<PatternManager>();
         desiredPattern = patternManager.GetRandomPattern();
+        foreach (var bar in desiredPattern.pattern)
+        {
+            foreach (var i in bar)
+            {
+                Debug.Log(i);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -120,7 +127,7 @@ public class Enemy : MonoBehaviour
             Spell spell = other.GetComponent<Spell>();
             if (spell)
             {
-                HashSet<InstrumentTypes.InstrumentType>[] song = spell.song;
+                var song = spell.song;
                 if (desiredPattern.SongContainsPattern(song))
                 {
                     TakeDamage(spell.damage);

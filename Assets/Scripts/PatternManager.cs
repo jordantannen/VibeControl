@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ public class PatternManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        patterns = JsonConvert.DeserializeObject<PatternList>(Resources.Load<TextAsset>("Patterns/Patterns").text);
+        patterns = JsonConvert.DeserializeObject<PatternList>(Resources.Load<TextAsset>("Patterns/InstrumentPatterns").text);
     }
 
     // Update is called once per frame
@@ -47,10 +48,10 @@ public class PatternManager : MonoBehaviour
         pattern = pattern[startOffset..endOffset];
         foreach (var p in patterns.patterns)
         {
-            if (p.Equals(new Pattern() { pattern = pattern }))
-            {
-                return p.spell;
-            }
+            // if (p.Equals(new Pattern() { pattern = pattern }))
+            // {
+            //     return p.spell;
+            // }
         }
         return SpellType.None;
     }
@@ -72,11 +73,31 @@ public class Pattern
 {
     public HashSet<InstrumentTypes.InstrumentType>[] pattern;
     
-    public SpellType spell;
+    public String spell;
+    
+    public InstrumentTypes.InstrumentType instrument;
 
     public bool SongContainsPattern(HashSet<InstrumentTypes.InstrumentType>[] song)
     {
-        return Equals(new Pattern() { pattern = song });
+        if (Equals(new Pattern() { pattern = song }))
+        {
+            return true;
+        }
+
+        if (pattern.Length > song.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < pattern.Length; i++)
+        {
+            if (!pattern[i].All(s => song[i].Contains(s)))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
     /**
      * Override equals method to compare contents of hashsets within the pattern.
@@ -89,7 +110,7 @@ public class Pattern
         {
             return false;
         }
-
+        
         if (item.pattern.Length != pattern.Length)
         {
             return false;

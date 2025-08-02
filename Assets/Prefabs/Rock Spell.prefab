@@ -141,3 +141,4 @@ MonoBehaviour:
   damage: 10
   spellType: 1
   duration: 1
+  instantiated: 0
