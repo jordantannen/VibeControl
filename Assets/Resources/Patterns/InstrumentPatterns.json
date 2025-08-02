@@ -65,7 +65,7 @@
       ],
       "spell": "1/2",
       "instrument": "Clap",
-      "name": "[C][C][C][C] x 4"
+      "name": "[C][][C][] x 4"
     },
     {
       "pattern": [
@@ -98,7 +98,7 @@
       ],
       "spell": "1/4",
       "instrument": "Snare",
-      "name": "[S][S][S][S] x 4"
+      "name": "[S][][][] x 4"
     }
   ]
 }
