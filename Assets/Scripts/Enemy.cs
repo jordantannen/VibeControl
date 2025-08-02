@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     
     private Rigidbody2D rb;
     private int stallDistance;
-    private bool fedUp = false;
+    public bool fedUp = false;
     
     [SerializeField] private int wanderSpeed = 1;
     private Vector2 wanderDirection;
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     
     private PatternManager patternManager;
     private Pattern desiredPattern;
+    public float topOffset = 256f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -112,7 +113,12 @@ public class Enemy : MonoBehaviour
             rb.linearVelocity = wanderDirection * wanderSpeed;
         }
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
-        if((screenPosition.y > Screen.height) || (screenPosition.y < 0f) || (screenPosition.x > Screen.width) || (screenPosition.x <0f))
+        if (screenPosition.y + topOffset > Screen.height)
+        {
+            rb.linearVelocity = Vector2.down * wanderSpeed;
+            return;
+        }
+        if((screenPosition.y + topOffset > Screen.height) || (screenPosition.y < 0f) || (screenPosition.x > Screen.width) || (screenPosition.x <0f))
         {   
             screenPosition.x = Mathf.Clamp(screenPosition.x, 0f, Screen.width);
             screenPosition.y = Mathf.Clamp(screenPosition.y, 0f, Screen.height);
@@ -124,11 +130,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(playerTag))
-        {
-            Destroy(gameObject);
-        }
-        else if (other.gameObject.CompareTag(spellTag))
+        if (other.gameObject.CompareTag(spellTag))
         {
             Spell spell = other.GetComponent<Spell>();
             if (spell)
@@ -143,6 +145,18 @@ public class Enemy : MonoBehaviour
             // {
             //     TakeDamage(spell.damage);
             // }
+        }
+        else if (other.gameObject.CompareTag(playerTag))
+        {
+            if (fedUp)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                rb.linearVelocity *= -1f;
+            }
+
         }
     }
     
