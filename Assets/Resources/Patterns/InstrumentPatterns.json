@@ -20,7 +20,8 @@
         ["Kick"], [], ["Kick"], []
       ],
       "spell": "1/2",
-      "instrument": "Kick"
+      "instrument": "Kick",
+      "name": "[K][][K][] x 4"
     },
     {
       "pattern": [
@@ -30,7 +31,8 @@
         ["Hihat"], [], ["Hihat"], []
       ],
       "spell": "1/2",
-      "instrument": "Hihat"
+      "instrument": "Hihat",
+      "name": "[H][][H][] x 4"
     },
     {
       "pattern": [
@@ -40,7 +42,8 @@
         ["Hihat"], ["Hihat"], ["Hihat"], ["Hihat"]
       ],
       "spell": "1/1",
-      "instrument": "Hihat"
+      "instrument": "Hihat",
+      "name": "[H][H][H][H] x 4"
     },
     {
       "pattern": [
@@ -50,7 +53,8 @@
         ["Clap"], [], [], []
       ],
       "spell": "1/8",
-      "instrument": "Clap"
+      "instrument": "Clap",
+      "name": "[][C][][C] x 4"
     },
     {
       "pattern": [
@@ -60,7 +64,8 @@
         ["Clap"], [], ["Clap"], []
       ],
       "spell": "1/2",
-      "instrument": "Clap"
+      "instrument": "Clap",
+      "name": "[C][C][C][C] x 4"
     },
     {
       "pattern": [
@@ -70,7 +75,8 @@
         ["Kick"], [], [], []
       ],
       "spell": "1/8",
-      "instrument": "Kick"
+      "instrument": "Kick",
+      "name": "[][K][][K] x 4"
     },
     {
       "pattern": [
@@ -80,7 +86,8 @@
         ["Snare"], [], [], []
       ],
       "spell": "1/8",
-      "instrument": "Snare"
+      "instrument": "Snare",
+      "name": "[][S][][S] x 4"
     },
     {
       "pattern": [
@@ -90,7 +97,8 @@
         ["Snare"], [], [], []
       ],
       "spell": "1/4",
-      "instrument": "Snare"
+      "instrument": "Snare",
+      "name": "[S][S][S][S] x 4"
     }
   ]
 }
