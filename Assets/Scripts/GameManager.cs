@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        scoreText.text = $"Time Alive: {minutes:00}:{seconds:00}";
+        scoreText.text = $"Time Vibing: {minutes:00}:{seconds:00}";
     }
 
     public void RestartGame()
