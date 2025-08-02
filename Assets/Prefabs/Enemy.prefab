@@ -134,9 +134,11 @@ MonoBehaviour:
   spellTag: Spell
   collisionOffset: 0.05
   bubbleText: {fileID: 3377684089730735960}
+  fedUp: 0
   wanderSpeed: 1
   wanderTimer: 0
   wanderDirectionInterval: 3
+  topOffset: 128
 --- !u!50 &6275897027850903351
 Rigidbody2D:
   serializedVersion: 5

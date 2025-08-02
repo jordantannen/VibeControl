@@ -99,7 +99,7 @@ public class Pattern
                 return false;
             }
         }
-
+        
         return true;
     }
     /**
