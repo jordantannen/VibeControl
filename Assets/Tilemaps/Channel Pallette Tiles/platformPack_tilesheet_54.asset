@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: platformPack_tilesheet_54
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 1240808662, guid: 77d3be81465b942d0aa07a7d0f8df1f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38679248, g: 0.3083393, b: 0.3083393, a: 1}
   m_Transform:
     e00: 1
     e01: 0
