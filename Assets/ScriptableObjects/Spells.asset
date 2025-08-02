@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45af788a2c1da674ab628315e2f9141d, type: 3}
   m_Name: Spells
   m_EditorClassIdentifier: 
+  prefabs:
+  - prefab: {fileID: 8809587645544776886, guid: 6ef65c515748e497b82abfc606deb43a, type: 3}
+    spellType: 1
+  - prefab: {fileID: 7189337224540227365, guid: bb05f6b67e8b28a49961084cfedc35ea, type: 3}
+    spellType: 4
