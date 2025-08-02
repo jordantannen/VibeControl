@@ -49,7 +49,7 @@ public abstract class InstrumentScript : MonoBehaviour
         TileBase currTile = tilemap.GetTile(currentPos);
         if (hasBeenPlaced && currTile == activeTile)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = Color.mediumSpringGreen;
             if (!hasBeenPlayed)
             {
                 Play();
@@ -58,7 +58,7 @@ public abstract class InstrumentScript : MonoBehaviour
         }
         else
         {
-            spriteRenderer.color = Color.blue;
+            spriteRenderer.color = Color.white;
             hasBeenPlayed = false;
         }
     }
