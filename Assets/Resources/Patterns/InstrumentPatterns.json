@@ -1,0 +1,95 @@
+{
+  "patterns":
+  [
+    {
+      "pattern": [
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], [],
+        ["Kick"], [], [], []
+      ],
+      "spell": "1/4",
+      "instrument": "Kick"
+    },
+    {
+      "pattern": [
+        ["Kick"], [], ["Kick"], [],
+        ["Kick"], [], ["Kick"], [],
+        ["Kick"], [], ["Kick"], [],
+        ["Kick"], [], ["Kick"], []
+      ],
+      "spell": "1/2",
+      "instrument": "Kick"
+    },
+    {
+      "pattern": [
+        ["Hihat"], [], ["Hihat"], [],
+        ["Hihat"], [], ["Hihat"], [],
+        ["Hihat"], [], ["Hihat"], [],
+        ["Hihat"], [], ["Hihat"], []
+      ],
+      "spell": "1/2",
+      "instrument": "Hihat"
+    },
+    {
+      "pattern": [
+        ["Hihat"], ["Hihat"], ["Hihat"], ["Hihat"],
+        ["Hihat"], ["Hihat"], ["Hihat"], ["Hihat"],
+        ["Hihat"], ["Hihat"], ["Hihat"], ["Hihat"],
+        ["Hihat"], ["Hihat"], ["Hihat"], ["Hihat"]
+      ],
+      "spell": "1/1",
+      "instrument": "Hihat"
+    },
+    {
+      "pattern": [
+        [], [], [], [],
+        ["Clap"], [], [], [],
+        [], [], [], [],
+        ["Clap"], [], [], []
+      ],
+      "spell": "1/8",
+      "instrument": "Clap"
+    },
+    {
+      "pattern": [
+        ["Clap"], [], ["Clap"], [],
+        ["Clap"], [], ["Clap"], [],
+        ["Clap"], [], ["Clap"], [],
+        ["Clap"], [], ["Clap"], []
+      ],
+      "spell": "1/2",
+      "instrument": "Clap"
+    },
+    {
+      "pattern": [
+        [], [], [], [],
+        ["Kick"], [], [], [],
+        [], [], [], [],
+        ["Kick"], [], [], []
+      ],
+      "spell": "1/8",
+      "instrument": "Kick"
+    },
+    {
+      "pattern": [
+        [], [], [], [],
+        ["Snare"], [], [], [],
+        [], [], [], [],
+        ["Snare"], [], [], []
+      ],
+      "spell": "1/8",
+      "instrument": "Snare"
+    },
+    {
+      "pattern": [
+        ["Snare"], [], [], [],
+        ["Snare"], [], [], [],
+        ["Snare"], [], [], [],
+        ["Snare"], [], [], []
+      ],
+      "spell": "1/4",
+      "instrument": "Snare"
+    }
+  ]
+}
