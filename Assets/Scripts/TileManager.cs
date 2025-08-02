@@ -131,9 +131,6 @@ public class TileManager : MonoBehaviour
     public void RemoveInstrument(Vector3 worldPosition)
     {
         Vector2Int gridPosition = GetXYPosition(worldPosition);
-        Debug.Log(gridPosition);
-        Debug.Log(gridArray.GetLength(0));
-        Debug.Log(gridArray.GetLength(1));
         if (gridPosition.x < gridArray.GetLength(0) && 
             gridPosition.x >= 0 &&
             gridPosition.y >= 0 &&
