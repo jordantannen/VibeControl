@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float wanderTimer;
     [SerializeField] private float wanderDirectionInterval = 3;
     
+    private PatternManager patternManager;
+    private Pattern desiredPattern;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +59,9 @@ public class Enemy : MonoBehaviour
         patienceBar.SetPatience(currPatience);
 
         wanderTimer = wanderDirectionInterval;
+        
+        patternManager = player.GetComponentInChildren<PatternManager>();
+        desiredPattern = patternManager.GetRandomPattern();
     }
 
     // Update is called once per frame
@@ -91,6 +98,15 @@ public class Enemy : MonoBehaviour
             wanderTimer = 0;
             rb.linearVelocity = wanderDirection * wanderSpeed;
         }
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
+        if((screenPosition.y > Screen.height) || (screenPosition.y < 0f) || (screenPosition.x > Screen.width) || (screenPosition.x <0f))
+        {   
+            screenPosition.x = Mathf.Clamp(screenPosition.x, 0f, Screen.width);
+            screenPosition.y = Mathf.Clamp(screenPosition.y, 0f, Screen.height);
+            Vector3 newWorldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+            transform.position = new Vector2(newWorldPosition.x, newWorldPosition.y);
+            rb.linearVelocity *= -1f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -102,10 +118,18 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.CompareTag(spellTag))
         {
             Spell spell = other.GetComponent<Spell>();
-            if (spell && spell.spellType == spellType)
+            if (spell)
             {
-                TakeDamage(spell.damage);
+                HashSet<InstrumentTypes.InstrumentType>[] song = spell.song;
+                if (desiredPattern.SongContainsPattern(song))
+                {
+                    TakeDamage(spell.damage);
+                }
             }
+            // if (spell && spell.spellType == spellType)
+            // {
+            //     TakeDamage(spell.damage);
+            // }
         }
     }
     

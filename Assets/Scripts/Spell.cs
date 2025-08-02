@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spell : MonoBehaviour
@@ -7,6 +8,7 @@ public class Spell : MonoBehaviour
     public SpellType spellType;
     public float duration = 1f;
 
+    public HashSet<InstrumentTypes.InstrumentType>[] song;
     private float timer = 0;
     
     // Update is called once per frame

@@ -128,13 +128,14 @@ MonoBehaviour:
   tickSpeed: 0
   speed: 2
   fedUpSpeed: 1
-  wanderSpeed: 1
   player: {fileID: 0}
   playerTag: Player
   enemyTag: Enemy
   spellTag: Spell
   collisionOffset: 0.05
-  wanderInterval: 2
+  wanderSpeed: 1
+  wanderTimer: 0
+  wanderDirectionInterval: 3
 --- !u!50 &6275897027850903351
 Rigidbody2D:
   serializedVersion: 5
