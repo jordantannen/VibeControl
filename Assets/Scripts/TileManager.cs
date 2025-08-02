@@ -110,7 +110,8 @@ public class TileManager : MonoBehaviour
             SpellType spellPlayed = patternManager.MatchesPattern(song);
             if (spellPlayed != SpellType.None)
             {
-                Instantiate(spells[spellPlayed], transform.position, transform.rotation); 
+                Instantiate(spell, transform.position, transform.rotation); 
+                // Instantiate(spells[spellPlayed], transform.position, transform.rotation); 
             }
             
         }
