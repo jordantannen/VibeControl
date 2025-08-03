@@ -54,7 +54,7 @@
       ],
       "spell": "1/8",
       "instrument": "Clap",
-      "name": "[][C][][C] x 4"
+      "name": "[][][][]\n[C][][][] x 2"
     },
     {
       "pattern": [
@@ -76,7 +76,7 @@
       ],
       "spell": "1/8",
       "instrument": "Kick",
-      "name": "[][K][][K] x 4"
+      "name": "[][][][]\n[K][][][] x 2"
     },
     {
       "pattern": [
@@ -87,7 +87,7 @@
       ],
       "spell": "1/8",
       "instrument": "Snare",
-      "name": "[][S][][S] x 4"
+      "name": "[][][][]\n[S][][][] x 2"
     },
     {
       "pattern": [
